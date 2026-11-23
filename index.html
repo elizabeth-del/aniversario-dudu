@@ -147,7 +147,8 @@
             position: relative;
             min-height: 430px;
             background: linear-gradient(to bottom, rgba(43, 30, 34, 0.35), rgba(43, 30, 34, 0.55)),
-                        url("público/img/portada.jpg") center/cover no-repeat,
+                        url("public/img/portada.jpg") center/cover no-repeat,
+                        url("public/img/portada.jpeg") center/cover no-repeat,
                         linear-gradient(135deg, #6D597A 0%, #B56576 50%, #EAAC8B 100%);
             display: flex;
             flex-direction: column;
@@ -656,7 +657,7 @@
                 </div>
             </div>
             <audio id="bgMusic" preload="metadata" loop>
-                <source src="público/musica/ella-sera.mp3" type="audio/mpeg">
+                <source src="public/musica/ella-sera.mp3" type="audio/mpeg">
             </audio>
         </div>
     </nav>
@@ -751,7 +752,7 @@
                 </div>
 
                 <div class="god-photo-frame" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="público/img/dios.jpg" alt="Dios en nuestra historia" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop&q=60'">
+                    <img id="godImg" src="public/img/dios.jpg" alt="Dios en nuestra historia" data-step="0" onerror="cycleSmartSrc(this, ['public/img/dios.jpeg', 'public/img/dios.png', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop&q=60'])">
                 </div>
 
                 <p class="god-text">
@@ -771,22 +772,22 @@
 
             <div class="collage-grid" id="collageGrid">
                 <div class="collage-tile tall wide" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="público/img/collage/collage1.jpg" alt="Collage 1" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700&auto=format&fit=crop&q=60'">
+                    <img src="public/img/collage/collage1.jpg" alt="Collage 1" data-step="0" onerror="cycleSmartSrc(this, ['public/img/collage/collage1.jpeg', 'public/img/collage/collage1.png', 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700&auto=format&fit=crop&q=60'])">
                 </div>
                 <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="público/img/collage/collage2.jpg" alt="Collage 2" onerror="this.src='https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&auto=format&fit=crop&q=60'">
+                    <img src="public/img/collage/collage2.jpg" alt="Collage 2" data-step="0" onerror="cycleSmartSrc(this, ['public/img/collage/collage2.jpeg', 'public/img/collage/collage2.png', 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&auto=format&fit=crop&q=60'])">
                 </div>
                 <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="público/img/collage/collage3.jpg" alt="Collage 3" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500&auto=format&fit=crop&q=60'">
+                    <img src="public/img/collage/collage3.jpg" alt="Collage 3" data-step="0" onerror="cycleSmartSrc(this, ['public/img/collage/collage3.jpeg', 'public/img/collage/collage3.png', 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500&auto=format&fit=crop&q=60'])">
                 </div>
                 <div class="collage-tile wide" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="público/img/collage/collage4.jpg" alt="Collage 4" onerror="this.src='https://images.unsplash.com/photo-1529636798458-92182e662485?w=700&auto=format&fit=crop&q=60'">
+                    <img src="public/img/collage/collage4.jpg" alt="Collage 4" data-step="0" onerror="cycleSmartSrc(this, ['public/img/collage/collage4.jpeg', 'public/img/collage/collage4.png', 'https://images.unsplash.com/photo-1529636798458-92182e662485?w=700&auto=format&fit=crop&q=60'])">
                 </div>
                 <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="público/img/collage/collage5.jpg" alt="Collage 5" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&auto=format&fit=crop&q=60'">
+                    <img src="public/img/collage/collage5.jpg" alt="Collage 5" data-step="0" onerror="cycleSmartSrc(this, ['public/img/collage/collage5.jpeg', 'public/img/collage/collage5.png', 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&auto=format&fit=crop&q=60'])">
                 </div>
                 <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="público/img/collage/collage6.jpg" alt="Collage 6" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=60'">
+                    <img src="public/img/collage/collage6.jpg" alt="Collage 6" data-step="0" onerror="cycleSmartSrc(this, ['public/img/collage/collage6.jpeg', 'public/img/collage/collage6.png', 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=60'])">
                 </div>
             </div>
         </div>
@@ -885,7 +886,7 @@
 
                 <p>Y cuando vino tu primo y salimos a comer juntos 🥹💗. Otro recuerdo más de esos que quizás parecen sencillos, pero que yo guardo porque forman parte de nuestro primer año.</p>
 
-                <p>Y así podría seguir y seguir y seguir… 🥹💗 Porque cuando miro hacia atrás, me doy cuenta de que nuestro año está lleno de momentos así: algunos enormes, otros pequeñitos, algunos planeados y otros que simplemente sucedieron. Pero todos tienen algo en común: estabas tú conmigo. 🫂❤️ Y cómo olvidarme de nuestras locuras también JAJAJA 😭😂💗. Como aquella vez que bailamos con <strong>“Mami Mami”</strong> y casi terminamos tomando JAJAJAJA 😭🍷💃🏻. Esos momentos en los que simplemente estábamos disfrutando juntos y haciendo nuestras tonterías son recuerdos que ahora me hacen sonreír muchísimo. 🥹💞</p>
+                <p>Y así podría seguir y seguir y seguir… 🥹💗 Porque cuando miro hacia atrás, me doy cuenta de que nuestro año está lleno de momentos así: algunos enormes, otros pequeñitos, algunos planeados y otros que simplemente sucedieron. Pero todos tienen algo en común: estabas tú conmigo. 🫂❤️ Y cómo olvidarme de nuestras locuras también JAJAJA 😭😂💗. Como aquella vez que bailamos con <strong>“Mami Mami”</strong> y casi terminamos tomando JAJAJAJA 😭🍷💃🏻. Esos momentos en las que simplemente estábamos disfrutando juntos y haciendo nuestras tonterías son recuerdos que ahora me hacen sonreír muchísimo. 🥹💞</p>
 
                 <p>También recuerdo cuando fuimos a un compartir con Elizabeth 🥹💗, cuando tomaste tu vinito JAJAJA 🍷😂 y terminamos pasando un momento bonito juntos. Y cómo olvidar aquella vez que tomamos en <strong>nuestro nidito de amor</strong> 🥹🏡💗. Quizá fueron momentos sencillos o hasta un poquito locos JAJAJA, pero son parte de nuestra historia y de esas pequeñas aventuras que solamente tú y yo podemos recordar y decir: <strong>“¿te acuerdas de ese día?”</strong> 😭😂❤️.</p>
 
@@ -925,6 +926,15 @@
     </div>
 
     <script>
+        // Ayuda para probar alternativas si una imagen no está en la primera extensión
+        function cycleSmartSrc(imgEl, fallbacks) {
+            const idx = Number(imgEl.dataset.step || 0);
+            if (idx < fallbacks.length) {
+                imgEl.dataset.step = String(idx + 1);
+                imgEl.src = fallbacks[idx];
+            }
+        }
+
         // 1. Cuenta regresiva hacia el 23 de noviembre de 2026
         const targetDate = new Date('2026-11-23T00:00:00');
         function updateCountdown() {
@@ -1044,13 +1054,13 @@
             });
         }
 
-        // 3. Generación de las 69 fotos (público/img/recuerdos/foto1.jpg .. foto69.jpg)
+        // 3. Generación de las 69 fotos (public/img/recuerdos/foto1 .. foto69)
         const totalFotos = 69;
         let fotosList = [];
         for (let i = 1; i <= totalFotos; i++) {
             fotosList.push({
                 num: i,
-                basePath: `público/img/recuerdos/foto${i}`
+                basePath: `public/img/recuerdos/foto${i}`
             });
         }
 
@@ -1063,10 +1073,13 @@
             const step = Number(imgEl.dataset.fallbackStep || 0);
             if (step === 0) {
                 imgEl.dataset.fallbackStep = 1;
-                imgEl.src = `público/img/recuerdos/foto${num}.png`;
+                imgEl.src = `public/img/recuerdos/foto${num}.jpg`;
             } else if (step === 1) {
                 imgEl.dataset.fallbackStep = 2;
-                imgEl.src = `público/img/recuerdos/foto${num}.webp`;
+                imgEl.src = `public/img/recuerdos/foto${num}.png`;
+            } else if (step === 2) {
+                imgEl.dataset.fallbackStep = 3;
+                imgEl.src = `public/img/recuerdos/foto${num}.webp`;
             } else {
                 cardEl.style.display = 'none';
             }
@@ -1081,7 +1094,7 @@
                 card.className = 'polaroid-item';
 
                 const img = document.createElement('img');
-                img.src = `${item.basePath}.jpg`;
+                img.src = `${item.basePath}.jpeg`;
                 img.alt = `Recuerdo ${item.num}`;
                 img.dataset.fallbackStep = '0';
                 img.onerror = () => handleImgError(img, card, item.num);
@@ -1118,7 +1131,7 @@
                 openDirectPhoto(randomImg.src);
             } else {
                 const randomItem = fotosList[Math.floor(Math.random() * fotosList.length)];
-                openDirectPhoto(`${randomItem.basePath}.jpg`);
+                openDirectPhoto(`${randomItem.basePath}.jpeg`);
             }
         }
 

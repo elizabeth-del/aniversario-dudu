@@ -147,7 +147,7 @@
             position: relative;
             min-height: 430px;
             background: linear-gradient(to bottom, rgba(43, 30, 34, 0.35), rgba(43, 30, 34, 0.55)),
-                        url("img/portada.jpg") center/cover no-repeat,
+                        url("público/img/portada.jpg") center/cover no-repeat,
                         linear-gradient(135deg, #6D597A 0%, #B56576 50%, #EAAC8B 100%);
             display: flex;
             flex-direction: column;
@@ -656,7 +656,7 @@
                 </div>
             </div>
             <audio id="bgMusic" preload="metadata" loop>
-                <source src="musica/ella-sera.mp3" type="audio/mpeg">
+                <source src="público/musica/ella-sera.mp3" type="audio/mpeg">
             </audio>
         </div>
     </nav>
@@ -751,7 +751,7 @@
                 </div>
 
                 <div class="god-photo-frame" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="img/dios.jpg" alt="Dios en nuestra historia" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop&q=60'">
+                    <img src="público/img/dios.jpg" alt="Dios en nuestra historia" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop&q=60'">
                 </div>
 
                 <p class="god-text">
@@ -771,22 +771,22 @@
 
             <div class="collage-grid" id="collageGrid">
                 <div class="collage-tile tall wide" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="img/collage/collage1.jpg" alt="Collage 1" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700&auto=format&fit=crop&q=60'">
+                    <img src="público/img/collage/collage1.jpg" alt="Collage 1" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700&auto=format&fit=crop&q=60'">
                 </div>
                 <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="img/collage/collage2.jpg" alt="Collage 2" onerror="this.src='https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&auto=format&fit=crop&q=60'">
+                    <img src="público/img/collage/collage2.jpg" alt="Collage 2" onerror="this.src='https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&auto=format&fit=crop&q=60'">
                 </div>
                 <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="img/collage/collage3.jpg" alt="Collage 3" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500&auto=format&fit=crop&q=60'">
+                    <img src="público/img/collage/collage3.jpg" alt="Collage 3" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500&auto=format&fit=crop&q=60'">
                 </div>
                 <div class="collage-tile wide" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="img/collage/collage4.jpg" alt="Collage 4" onerror="this.src='https://images.unsplash.com/photo-1529636798458-92182e662485?w=700&auto=format&fit=crop&q=60'">
+                    <img src="público/img/collage/collage4.jpg" alt="Collage 4" onerror="this.src='https://images.unsplash.com/photo-1529636798458-92182e662485?w=700&auto=format&fit=crop&q=60'">
                 </div>
                 <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="img/collage/collage5.jpg" alt="Collage 5" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&auto=format&fit=crop&q=60'">
+                    <img src="público/img/collage/collage5.jpg" alt="Collage 5" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&auto=format&fit=crop&q=60'">
                 </div>
                 <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
-                    <img src="img/collage/collage6.jpg" alt="Collage 6" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=60'">
+                    <img src="público/img/collage/collage6.jpg" alt="Collage 6" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=60'">
                 </div>
             </div>
         </div>
@@ -1044,13 +1044,13 @@
             });
         }
 
-        // 3. Generación de las 69 fotos (img/recuerdos/foto1.jpg .. foto69.jpg)
+        // 3. Generación de las 69 fotos (público/img/recuerdos/foto1.jpg .. foto69.jpg)
         const totalFotos = 69;
         let fotosList = [];
         for (let i = 1; i <= totalFotos; i++) {
             fotosList.push({
                 num: i,
-                basePath: `img/recuerdos/foto${i}`
+                basePath: `público/img/recuerdos/foto${i}`
             });
         }
 
@@ -1063,10 +1063,10 @@
             const step = Number(imgEl.dataset.fallbackStep || 0);
             if (step === 0) {
                 imgEl.dataset.fallbackStep = 1;
-                imgEl.src = `img/recuerdos/foto${num}.png`;
+                imgEl.src = `público/img/recuerdos/foto${num}.png`;
             } else if (step === 1) {
                 imgEl.dataset.fallbackStep = 2;
-                imgEl.src = `img/recuerdos/foto${num}.webp`;
+                imgEl.src = `público/img/recuerdos/foto${num}.webp`;
             } else {
                 cardEl.style.display = 'none';
             }

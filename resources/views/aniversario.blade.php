@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>365 días contigo ♡ Enrique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-pink: #F9D5E0;
+            --paper-light: #FDF4F6;
+            --paper-pink: #F8C8D8;
+            --btn-rose: #E598AE;
+            --btn-rose-hover: #D47A95;
+            --ink-dark: #2B1E22;
+            --ink-soft: #5C434A;
+            --tape-color: rgba(235, 206, 178, 0.72);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-pink);
+            background-image:
+                radial-gradient(#F2B8C9 1px, transparent 1px),
+                radial-gradient(#FDE8EE 1.5px, transparent 1.5px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+            color: var(--ink-dark);
+            overflow-x: hidden;
+        }
+
+        .burst-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 24px;
+            animation: burstAnim 1.3s ease-out forwards;
+        }
+        @keyframes burstAnim {
+            0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(1.4); opacity: 0; }
+        }
+
+        /* NAVBAR SUPERIOR */
+        nav.top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(249, 213, 224, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1.5px solid rgba(229, 152, 174, 0.45);
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .nav-heart {
+            font-size: 1.7rem;
+            text-decoration: none;
+            color: var(--ink-dark);
+            transition: transform 0.2s;
+        }
+        .nav-heart:hover { transform: scale(1.15); }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink-dark);
+            font-weight: 700;
+            font-size: 0.92rem;
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover { border-bottom-color: var(--ink-dark); }
+
+        .mini-player {
+            background: rgba(255, 255, 255, 0.88);
+            border: 1.5px solid var(--btn-rose);
+            border-radius: 30px;
+            padding: 6px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 12px rgba(157, 92, 99, 0.12);
+            max-width: 100%;
+        }
+        .song-icon {
+            background: var(--paper-pink);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+        .song-details { display: flex; flex-direction: column; min-width: 0; }
+        .song-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--ink-dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 240px;
+        }
+        .song-sub {
+            font-size: 0.7rem;
+            color: var(--ink-soft);
+        }
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 3px;
+        }
+        .ctrl-btn {
+            background: var(--paper-pink);
+            border: 1px solid var(--btn-rose);
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            color: var(--ink-dark);
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.15s, background 0.2s;
+        }
+        .ctrl-btn:hover { transform: scale(1.12); background: var(--btn-rose); color: #fff; }
+
+        /* PORTADA HERO */
+        .hero-banner {
+            position: relative;
+            min-height: 430px;
+            background: linear-gradient(to bottom, rgba(43, 30, 34, 0.35), rgba(43, 30, 34, 0.55)),
+                        url("{{ asset('img/portada.jpg') }}") center/cover no-repeat,
+                        linear-gradient(135deg, #6D597A 0%, #B56576 50%, #EAAC8B 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px 80px;
+            color: #FFFFFF;
+        }
+        .hero-title {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(3.4rem, 8vw, 5.5rem);
+            font-weight: 700;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+            margin-bottom: 6px;
+        }
+        .hero-title::after {
+            content: '';
+            display: block;
+            width: 190px;
+            height: 4px;
+            background: #FFFFFF;
+            border-radius: 10px;
+            margin: 2px auto 14px;
+            opacity: 0.9;
+        }
+        .hero-subtitle {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.45rem;
+            max-width: 520px;
+            margin-bottom: 24px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+        }
+        .hero-note-right {
+            position: absolute;
+            right: 40px;
+            bottom: 45px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.7rem;
+            transform: rotate(-5deg);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .pill-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--btn-rose);
+            color: var(--ink-dark);
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            padding: 10px 22px;
+            border-radius: 50px;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(157, 92, 99, 0.25);
+            transition: all 0.25s ease;
+        }
+        .pill-btn:hover {
+            background: var(--btn-rose-hover);
+            color: #FFF;
+            transform: translateY(-2px) scale(1.03);
+        }
+        .pill-btn-light { background: #F4B6C7; }
+
+        .scrapbook-container {
+            max-width: 1160px;
+            margin: -35px auto 60px;
+            padding: 0 18px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .paper-card {
+            background: var(--paper-light);
+            border-radius: 18px;
+            padding: 28px 26px;
+            box-shadow: 0 10px 28px rgba(130, 75, 92, 0.12);
+            border: 2px dashed rgba(229, 152, 174, 0.55);
+            position: relative;
+            margin-bottom: 24px;
+        }
+        .paper-card.pink-tint {
+            background: #F9CBD9;
+            border-color: rgba(255, 255, 255, 0.75);
+        }
+        .washi-tape {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-3deg);
+            width: 85px;
+            height: 24px;
+            background: var(--tape-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            z-index: 5;
+        }
+
+        .hand-title {
+            font-family: 'Caveat', cursive;
+            font-size: 2.35rem;
+            font-weight: 700;
+            color: var(--ink-dark);
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .grid-row-1 {
+            display: grid;
+            grid-template-columns: 330px 1fr;
+            gap: 22px;
+            margin-bottom: 24px;
+        }
+        .grid-row-1 .paper-card { margin-bottom: 0; }
+
+        .anniversary-dates {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink-soft);
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        .countdown-boxes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 18px;
+            text-align: center;
+        }
+        .cd-item span.num {
+            display: block;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ink-dark);
+            border-right: 1px solid rgba(92, 67, 74, 0.25);
+        }
+        .cd-item:last-child span.num { border-right: none; }
+        .cd-item span.lbl {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+
+        .timeline-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-top: 22px;
+        }
+        .timeline-track {
+            display: flex;
+            gap: 18px;
+            overflow-x: auto;
+            padding: 12px 6px;
+            scroll-behavior: smooth;
+            width: 100%;
+            scrollbar-width: none;
+        }
+        .timeline-track::-webkit-scrollbar { display: none; }
+        .timeline-node {
+            min-width: 112px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.25s;
+        }
+        .timeline-node:hover { transform: translateY(-5px) scale(1.05); }
+        .node-circle {
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 3px solid var(--ink-dark);
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.1rem;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.08);
+        }
+        .node-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--ink-dark);
+            line-height: 1.25;
+        }
+        .timeline-arrow {
+            background: var(--btn-rose);
+            border: none;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .grid-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 22px;
+            margin-bottom: 24px;
+        }
+        .grid-row-2 .paper-card { margin-bottom: 0; }
+
+        .polaroids-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .header-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .polaroid-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+        }
+        .polaroid-item {
+            background: #FFFFFF;
+            padding: 8px;
+            border-radius: 6px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+        .polaroid-item:nth-child(odd) { transform: rotate(-1.5deg); }
+        .polaroid-item:nth-child(even) { transform: rotate(1.5deg); }
+        .polaroid-item:hover { transform: rotate(0deg) scale(1.06); z-index: 10; }
+        .polaroid-item::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 44px;
+            height: 15px;
+            background: var(--tape-color);
+        }
+        .polaroid-item img {
+            width: 100%;
+            height: 145px;
+            object-fit: cover;
+            border-radius: 3px;
+            display: block;
+        }
+        .gallery-footer-actions {
+            margin-top: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* COLLAGE DE FOTOS SIN TEXTO */
+        .collage-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 170px;
+            gap: 14px;
+            margin-top: 14px;
+        }
+        .collage-tile {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 8px 18px rgba(130, 75, 92, 0.16);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .collage-tile:hover { transform: scale(1.02); z-index: 4; }
+        .collage-tile.tall { grid-row: span 2; }
+        .collage-tile.wide { grid-column: span 2; }
+        .collage-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* TARJETA GRACIAS A DIOS CON FOTITO */
+        .god-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .god-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .cross-icon { font-size: 2rem; font-weight: 700; }
+        .god-photo-frame {
+            width: 100%;
+            max-width: 240px;
+            background: #FFFFFF;
+            padding: 7px;
+            border-radius: 8px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+            transform: rotate(-2deg);
+            margin: 6px auto 12px;
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+        .god-photo-frame:hover { transform: rotate(0deg) scale(1.03); }
+        .god-photo-frame img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+        }
+        .god-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--ink-dark);
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .grid-row-3 {
+            display: grid;
+            grid-template-columns: 440px 1fr;
+            gap: 22px;
+        }
+        .grid-row-3 .paper-card { margin-bottom: 0; }
+
+        .letter-preview-box {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: 10px;
+        }
+        .cute-envelope {
+            width: 125px;
+            height: 88px;
+            background: linear-gradient(135deg, #F7B5C8, #EE96B0);
+            border-radius: 10px;
+            border: 2px solid #D97B97;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            flex-shrink: 0;
+            transform: rotate(-6deg);
+            box-shadow: 0 8px 18px rgba(157, 92, 99, 0.22);
+            cursor: pointer;
+            transition: transform 0.25s;
+        }
+        .cute-envelope:hover { transform: rotate(0deg) scale(1.06); }
+
+        .closing-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .closing-content { text-align: center; flex: 1; }
+        .closing-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink-soft);
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+        .te-amo-enrique {
+            font-family: 'Caveat', cursive;
+            font-size: 2.7rem;
+            font-weight: 700;
+            color: var(--ink-dark);
+            margin-bottom: 8px;
+        }
+        .brush-badge {
+            display: inline-block;
+            background: var(--btn-rose);
+            padding: 6px 26px;
+            border-radius: 30px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--ink-dark);
+        }
+        .bears-sticker {
+            font-size: 4.5rem;
+            line-height: 1;
+            text-align: center;
+            filter: drop-shadow(0 6px 10px rgba(0,0,0,0.12));
+        }
+
+        .love-bar { text-align: center; }
+        .love-bar-btns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .love-toast {
+            margin-top: 14px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.3rem;
+            color: var(--ink-dark);
+            background: rgba(255,255,255,0.75);
+            display: inline-block;
+            padding: 8px 22px;
+            border-radius: 25px;
+            border: 1.5px dashed var(--btn-rose);
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(43, 30, 34, 0.65);
+            backdrop-filter: blur(5px);
+            z-index: 500;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-paper {
+            background: #FFFDFD;
+            background-image: radial-gradient(#F8C8D8 0.8px, transparent 0.8px);
+            background-size: 20px 20px;
+            border: 3px solid var(--btn-rose);
+            border-radius: 22px;
+            max-width: 680px;
+            width: 100%;
+            max-height: 88vh;
+            overflow-y: auto;
+            padding: 38px 34px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .modal-letter-body p {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.28rem;
+            line-height: 1.65;
+            color: var(--ink-dark);
+            margin-bottom: 16px;
+        }
+        .modal-letter-closing {
+            font-family: 'Caveat', cursive;
+            font-size: 1.95rem;
+            font-weight: 700;
+            color: var(--ink-dark);
+            text-align: center;
+            margin-top: 22px;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 920px) {
+            .grid-row-1, .grid-row-2, .grid-row-3 { grid-template-columns: 1fr; }
+            .collage-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-note-right { position: static; margin-top: 15px; }
+            .closing-box { flex-direction: column; }
+            .modal-paper { padding: 26px 20px; }
+            .song-title { max-width: 175px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-bar">
+        <a href="#inicio" class="nav-heart" onclick="loveExplosion(event)">♡</a>
+
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#historia">Nuestra historia</a>
+            <a href="#recuerdos">69 Recuerdos</a>
+            <a href="#collage">Collage</a>
+            <a href="#dios">Gracias a Dios</a>
+            <a href="#carta">Carta para ti</a>
+            <a href="#final">Final</a>
+        </div>
+
+        <div class="mini-player">
+            <div class="song-icon" id="musicDisc">🎵</div>
+            <div class="song-details">
+                <span class="song-title" title="XDM - Ella Será (Cover Audio) ft. Fabio Legarda">XDM - Ella Será (Cover Audio) ft. Fabio Legarda</span>
+                <span class="song-sub" id="musicStatus">Listo para reproducir</span>
+                <div class="player-controls">
+                    <button type="button" class="ctrl-btn" onclick="restartMusic()" title="Reiniciar">⏮</button>
+                    <button type="button" class="ctrl-btn" id="playPauseBtn" onclick="toggleMusic()">▶</button>
+                    <label class="ctrl-btn" title="Elegir MP3 desde tu PC" style="cursor:pointer;">
+                        📁
+                        <input type="file" id="localAudioInput" accept="audio/*" style="display:none;" onchange="loadLocalAudio(event)">
+                    </label>
+                    <button type="button" class="ctrl-btn" onclick="loveExplosion(event)" title="Me encanta">♥</button>
+                </div>
+            </div>
+            <audio id="bgMusic" preload="metadata" loop>
+                <source src="{{ asset('musica/ella-sera.mp3') }}" type="audio/mpeg">
+            </audio>
+        </div>
+    </nav>
+
+    <header class="hero-banner" id="inicio">
+        <h1 class="hero-title">365 días contigo ♡</h1>
+        <p class="hero-subtitle">Nuestro primer año,<br>nuestros recuerdos, nuestra historia.</p>
+        <a href="#aniversario" class="pill-btn pill-btn-light">Comenzar nuestra historia →</a>
+        <div class="hero-note-right">Gracias por existir,<br>mi amor ♡</div>
+    </header>
+
+    <main class="scrapbook-container">
+
+        <div class="grid-row-1" id="aniversario">
+            <div class="paper-card">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="font-size: 1.7rem;">📅</span>
+                    <h2 class="hand-title" style="margin: 0;">Nuestro aniversario</h2>
+                </div>
+                <p class="anniversary-dates">23 de noviembre de 2025 →<br>23 de noviembre de 2026</p>
+
+                <button type="button" class="pill-btn" style="width: 100%;" onclick="loveExplosion(event)">Nuestro primer añito ♡</button>
+
+                <div class="countdown-boxes">
+                    <div class="cd-item"><span class="num" id="cd-days">000</span><span class="lbl">Días</span></div>
+                    <div class="cd-item"><span class="num" id="cd-hours">00</span><span class="lbl">Horas</span></div>
+                    <div class="cd-item"><span class="num" id="cd-min">00</span><span class="lbl">Min</span></div>
+                    <div class="cd-item"><span class="num" id="cd-seg">00</span><span class="lbl">Seg</span></div>
+                </div>
+            </div>
+
+            <div class="paper-card" id="historia">
+                <h2 class="hand-title" style="text-align: center;">Nuestra historia ♡</h2>
+                <div class="timeline-wrapper">
+                    <div class="timeline-track" id="timelineTrack">
+                        <div class="timeline-node" onclick="showStoryToast('⚽ Tus partidos y entrenamientos: Siempre ahí apoyándote y siendo tu fan #1.')">
+                            <div class="node-circle">⚽</div>
+                            <div class="node-label">Tus partidos y entrenamientos</div>
+                        </div>
+                        <div class="timeline-node" onclick="showStoryToast('🚗 Las noches de manejar: Conversaciones eternas, música y nosotros dos.')">
+                            <div class="node-circle">🚗</div>
+                            <div class="node-label">Las noches de manejar</div>
+                        </div>
+                        <div class="timeline-node" onclick="showStoryToast('🎄 Nuestra primera Navidad juntos: El mejor regalo siempre fuiste tú.')">
+                            <div class="node-circle">🎄</div>
+                            <div class="node-label">Navidad</div>
+                        </div>
+                        <div class="timeline-node" onclick="showStoryToast('🎆 Año Nuevo: Empezando el 2026 de tu mano.')">
+                            <div class="node-circle">🎆</div>
+                            <div class="node-label">Año Nuevo</div>
+                        </div>
+                        <div class="timeline-node" onclick="showStoryToast('🌊 Río Chili: Paseos lindos y momentos inolvidables contigo.')">
+                            <div class="node-circle">🌊</div>
+                            <div class="node-label">Río Chili</div>
+                        </div>
+                        <div class="timeline-node" onclick="showStoryToast('🍟 Mercosur y chipapa yiico: Nuestras salidas favoritas para comer rico.')">
+                            <div class="node-circle">🍟</div>
+                            <div class="node-label">Mercosur y chipapa yiico</div>
+                        </div>
+                    </div>
+                    <button type="button" class="timeline-arrow" onclick="scrollTimeline()">→</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row-2" id="recuerdos">
+            <!-- GALERÍA DE 69 FOTOS SIN TEXTO -->
+            <div class="paper-card">
+                <div class="polaroids-header">
+                    <div>
+                        <h2 class="hand-title" style="margin: 0;">69 recuerdos que nunca quiero olvidar ♡</h2>
+                        <span id="photoCounterLabel" style="font-size: 0.82rem; color: var(--ink-soft); font-weight: 600;">Mostrando 12 de 69 fotos</span>
+                    </div>
+                    <div class="header-controls">
+                        <button type="button" class="pill-btn" style="padding: 7px 14px; font-size: 0.82rem;" onclick="shuffleAllPhotos()">🔀 Mezclar 69</button>
+                        <button type="button" class="pill-btn pill-btn-light" style="padding: 7px 14px; font-size: 0.82rem;" id="toggleAllBtn" onclick="toggleShowAllPhotos()">Ver las 69</button>
+                    </div>
+                </div>
+
+                <div class="polaroid-row" id="polaroidGrid"></div>
+
+                <div class="gallery-footer-actions">
+                    <button type="button" class="pill-btn" onclick="openRandomFrom69()">🎲 Foto aleatoria de las 69</button>
+                </div>
+            </div>
+
+            <!-- GRACIAS A DIOS CON FOTITO -->
+            <div class="paper-card pink-tint god-card" id="dios">
+                <div class="god-header">
+                    <span class="cross-icon">✝</span>
+                    <h2 class="hand-title" style="font-size: 1.9rem; margin: 0;">Y en nuestra historia...<br>Dios también estuvo presente ♡</h2>
+                </div>
+
+                <div class="god-photo-frame" onclick="openDirectPhoto(this.querySelector('img').src)">
+                    <img src="{{ asset('img/dios.jpg') }}" alt="Dios en nuestra historia" onerror="this.src='C:\Users\ELIZABETH\aniversario-web\public\img\dios.jpg'">
+                </div>
+
+                <p class="god-text">
+                    Gracias, Dios, por haber cruzado nuestros caminos, por acompañarnos en los momentos bonitos y también en los difíciles. Gracias por darnos paciencia, sabiduría y amor.
+                </p>
+                <button type="button" class="pill-btn" onclick="loveExplosion(event)">Siempre contigo ♡</button>
+            </div>
+        </div>
+
+        <!-- COLLAGE DE FOTOS SIN TEXTO -->
+        <div class="paper-card" id="collage">
+            <div class="washi-tape"></div>
+            <div class="polaroids-header">
+                <h2 class="hand-title" style="margin: 0;">Nuestro collage de momentos ♡</h2>
+                <button type="button" class="pill-btn" style="padding: 7px 16px; font-size: 0.85rem;" onclick="shuffleCollage()">✨ Reordenar collage</button>
+            </div>
+
+            <div class="collage-grid" id="collageGrid">
+                <div class="collage-tile tall wide" onclick="openDirectPhoto(this.querySelector('img').src)">
+                    <img src="{{ asset('img/collage/collage1.jpg') }}" alt="Collage 1" onerror="this.src='C:\Users\ELIZABETH\aniversario-web\public\img\collage\collage1.jpg'">
+                </div>
+                <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
+                    <img src="{{ asset('img/collage/collage2.jpg') }}" alt="Collage 2" onerror="this.src='C:\Users\ELIZABETH\aniversario-web\public\img\collage\collage2.jpg'">
+                </div>
+                <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
+                    <img src="{{ asset('img/collage/collage3.jpg') }}" alt="Collage 3" onerror="this.src='C:\Users\ELIZABETH\aniversario-web\public\img\collage\collage3.jpg'">
+                </div>
+                <div class="collage-tile wide" onclick="openDirectPhoto(this.querySelector('img').src)">
+                    <img src="{{ asset('img/collage/collage4.jpg') }}" alt="Collage 4" onerror="this.src='C:\Users\ELIZABETH\aniversario-web\public\img\collage\collage4.jpg'">
+                </div>
+                <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
+                    <img src="{{ asset('img/collage/collage5.jpg') }}" alt="Collage 5" onerror="this.src='C:\Users\ELIZABETH\aniversario-web\public\img\collage\collage5.jpg'">
+                </div>
+                <div class="collage-tile" onclick="openDirectPhoto(this.querySelector('img').src)">
+                    <img src="{{ asset('img/collage/collage6.jpg') }}" alt="Collage 6" onerror="this.src='C:\Users\ELIZABETH\aniversario-web\public\img\collage\collage6.jpg'">
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row-3" id="carta">
+            <div class="paper-card">
+                <div class="washi-tape"></div>
+                <h2 class="hand-title" style="text-align: center;">Carta para ti ♡</h2>
+                <div class="letter-preview-box">
+                    <div class="cute-envelope" onclick="toggleModal('letterModal')">💌</div>
+                    <div>
+                        <p style="font-weight: 700; margin-bottom: 6px;">Mi amorcito hermoso...</p>
+                        <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.45; margin-bottom: 14px;">
+                            Aquí te dejo todo lo que siento, lo que agradezco y mis promesas para lo que sigue ♡
+                        </p>
+                        <button type="button" class="pill-btn" onclick="toggleModal('letterModal')">Leer carta →</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="paper-card" id="final">
+                <div class="closing-box">
+                    <div class="closing-content">
+                        <h2 class="hand-title">Y esto recién comienza... ♡</h2>
+                        <p class="closing-text">
+                            Gracias por este primer año, mi amorcito.<br>
+                            Por todos los momentos yiicos, las risas, las peleas, los abrazos y por seguir eligiéndonos.
+                        </p>
+                        <div class="te-amo-enrique">Te amo, Enrique ♡</div>
+                        <div class="brush-badge">1 año de nosotros ♡</div>
+                    </div>
+                    <div class="bears-sticker">🧸❤️🧸</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="paper-card love-bar" style="margin-top: 24px;">
+            <h2 class="hand-title" style="font-size: 2rem;">Botoncitos de amor para ti, Enrique ♡</h2>
+            <div class="love-bar-btns">
+                <button type="button" class="pill-btn" onclick="loveExplosion(event)">💗 Lluvia de Te Amos</button>
+                <button type="button" class="pill-btn pill-btn-light" onclick="randomLoveReason()">✨ ¿Por qué te amo?</button>
+                <button type="button" class="pill-btn" onclick="randomCoupon()">🎟️ Vale yiico</button>
+                <button type="button" class="pill-btn pill-btn-light" onclick="openRandomFrom69()">📸 Recuerdo sorpresa</button>
+                <button type="button" class="pill-btn" onclick="randomAnecdote()">😂 Anécdota yiica</button>
+            </div>
+            <div>
+                <p class="love-toast" id="loveToast">Toca cualquier botoncito o recuerdo para ver una sorpresa 💕</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MODAL DE LA CARTA COMPLETA -->
+    <div class="modal-overlay" id="letterModal" onclick="toggleModal('letterModal')">
+        <div class="modal-paper" onclick="event.stopPropagation()">
+            <h2 class="hand-title" style="font-size: 2.6rem;">Mi amorcito hermoso 🥺💗✨</h2>
+
+            <div class="modal-letter-body">
+                <p>Y si hay algo que quiero hacer en este primer añito es agradecerte. 🥹❤️ Porque cuando pienso en estos 12 meses, me doy cuenta de que tengo mi corazón llenito de recuerdos contigo, de momentos que quizás para otras personas serían pequeñitos, pero que para mí significan muchísimo porque los viví a tu lado. 🫂💞</p>
+
+                <p>Gracias por acompañarme a mis partidos y a mis entrenamientos de fútbol ⚽️🥹, por estar ahí apoyándome y compartiendo conmigo algo que me gusta tanto. Gracias también por lavarme mi ropita 🥺😂❤️, porque aunque parezca una cosita pequeñita, yo la recuerdo con muchísimo cariño. Gracias por esas noches en las que me enseñaste a manejar 🚗🥹, por tenerme paciencia y por compartir conmigo esos momentos que terminaron convirtiéndose en recuerdos tan bonitos.</p>
+
+                <p>Gracias por nuestro Año Nuevo 🎆💗, por la Navidad 🎄🥹 y por todos esos días que hicieron que este año se sintiera tan nuestro. Y cómo olvidarme de ese día en el río Chili 🌊❤️‍🩹, cuando tuve que calmarte en un momento de desesperación y, aunque en ese instante no parecía que terminaría así, al final terminó convirtiéndose en un recuerdo súper bonito que guardo con muchísimo cariño. 🥺🫂</p>
+
+                <p>También recuerdo nuestras idas a Mercosur 🥹💕, cuando me comprabas mi comidita para que no pasara hambre. Porque síii, mi chiquito siempre pendiente de que su niña coma JAJAJA 😂💗. Y nuestras veces de ir por papita, chipapa, yiicooo 😭😂🍟. Son esas cositas tan simples que terminan siendo de mis recuerdos favoritos.</p>
+
+                <p>Y cómo olvidar las veces que te ganaba en el billar JAJAJAJA 🎱😂💗. Eso sí que no podía faltar en esta carta porque claramente tengo que dejar constancia de mis victorias 😌😂. Aunque seguramente tú dirás que fue suerte, pero los dos sabemos quién era la verdadera campeona. 😌🏆💗</p>
+
+                <p>También recuerdo con muchísimo cariño cuando en Navidad me regalaste esa hermosa casaquita 🥹❤️. Ese regalo significó muchísimo para mí y todavía lo guardo con un cariño enorme porque detrás de él estaba todo el amor y el detalle que pusiste para sorprenderme. 🎄💗</p>
+
+                <p>Y sí, también quiero agradecerte hasta por nuestras peleas. 🥺❤️‍🩹 No porque me guste que peleemos JAJAJA, sino porque incluso esos momentos nos enseñaron cosas. Nos hicieron darnos cuenta de que no sabemos estar tan fácilmente el uno sin el otro, pero también nos enseñaron que amar no significa vivir peleando, sino aprender a escucharnos, comprendernos y cuidar mucho más nuestra relación. 🫂💗</p>
+
+                <p>Gracias por esas veces en las que me comprabas pura frutita, yiico yiicooo 🍓🍎😂💕. Por esos detalles que quizás parecían simples, pero que yo veía y pensaba: “awww, está pensando en mí”. 🥹❤️</p>
+
+                <p>Y cómo olvidar cuando casi nos roban 😭😭😂. En ese momento seguramente no nos causó nada de gracia, pero ahora lo recuerdo y digo: qué cantidad de cosas nos han pasado juntos JAJAJA. 😂💗</p>
+
+                <p>También está ese día en que fuimos a entrenar a una cancha por Cayma y la pelota terminó cayéndose a la torrentera 😭⚽️😂. Otro recuerdo más que demuestra que contigo hasta las cosas que salen mal terminan convirtiéndose en anécdotas que después recordamos riéndonos.</p>
+
+                <p>Y nuestras comidas de chicharrón con agüita de aguaymanto 🥹😂💗. No sé por qué, pero esos momentos sencillos se quedaron guardaditos en mi corazón. Porque contigo aprendí que no siempre necesitamos hacer algo enorme para crear un recuerdo bonito; a veces basta con estar juntitos, comer algo rico y disfrutar de nuestra compañía. 🫶🏻🌷</p>
+
+                <p>Gracias también por dejarme acompañarte a tus partidos de pichibol ⚽️🥹💗. Me gustaba estar ahí contigo, verte jugar y compartir también esas cositas que forman parte de tu vida.</p>
+
+                <p>Y recuerdo cuando en vacaciones estabas trabajando y yo fui a llevarte tu desayunito de mañanita 🥹🥐☕💗. Me hace sonreír pensar en esas pequeñas formas en las que también nosotros nos hemos cuidado mutuamente.</p>
+
+                <p>Gracias por todos esos momentos con tu familia: por el cumpleaños de tu papá 🎂💗, por aquel Día del Padre en el que fuimos con tu familia y por dejarme compartir también esos momentos importantes contigo y con las personas que quieres. 🥹🫂</p>
+
+                <p>Y cómo olvidarme de la sorpresa tan bonita que me hiciste por mi cumpleaños 😭🎂💗. Esa sorpresa la amé muchísimo y todavía la guardo porque para mí no fue solamente el regalo, sino todo el cariño que pusiste en hacerme sentir especial. 🥹🌷</p>
+
+                <p>También recuerdo aquel día en que me dijiste “sal, por favor” y cuando salí me encontré con esa cajita de chocolates 🍫🥹💗. Awww, mi vidaaa, esas sorpresas tuyas que llegan cuando menos me las espero son de las cositas que más bonito se sienten.</p>
+
+                <p>Y ese día de mi entrenamiento cuando llegaste con una gran sorpresa: mi Stitch 😭😭💗. Awww, mi ochitooo 🥹🧸💞. No sabes cuánto amé ese detalle. Y luego llegó nuestro 14 de febrero ❤️🌹, cuando me regalaste mi pingüinito lindo 🐧🥹, esas hermosas rosas 🌹, chocolates y dulces 🍫🍬💗. Son recuerdos que de verdad quiero guardar siempre.</p>
+
+                <p>Y yo tampoco podía quedarme atrás JAJAJA 😂💗. Por eso te regalé tu ochito, para que no te sintieras sólito 🥺🧸❤️. Y también cuando yo le di a Puo su peluchito lindo 🥹💞. Awww, qué recuerdos tan nuestros.</p>
+
+                <p>También amo recordar ese día que subimos al cerro con mi hermano 🏔️🥹💗, cuando conociste una vizcachita JAJAJA 🐭😂 y hasta terminamos jugando fútbol. Y OBVIAMENTE tengo que decirlo: te gané en mi cancha 😌⚽️🏆 JAJAJAJA. Ese día lo amé muchísimo. Y cuando yo me paraba en una pared ajajajaj 😭😂, no sé por qué, pero son esas pequeñas tonterías que ahora recuerdo y me hacen sonreír.</p>
+
+                <p>Y cuando vino tu primo y salimos a comer juntos 🥹💗. Otro recuerdo más de esos que quizás parecen sencillos, pero que yo guardo porque forman parte de nuestro primer año.</p>
+
+                <p>Y así podría seguir y seguir y seguir… 🥹💗 Porque cuando miro hacia atrás, me doy cuenta de que nuestro año está lleno de momentos así: algunos enormes, otros pequeñitos, algunos planeados y otros que simplemente sucedieron. Pero todos tienen algo en común: estabas tú conmigo. 🫂❤️ Y cómo olvidarme de nuestras locuras también JAJAJA 😭😂💗. Como aquella vez que bailamos con <strong>“Mami Mami”</strong> y casi terminamos tomando JAJAJAJA 😭🍷💃🏻. Esos momentos en los que simplemente estábamos disfrutando juntos y haciendo nuestras tonterías son recuerdos que ahora me hacen sonreír muchísimo. 🥹💞</p>
+
+                <p>También recuerdo cuando fuimos a un compartir con Elizabeth 🥹💗, cuando tomaste tu vinito JAJAJA 🍷😂 y terminamos pasando un momento bonito juntos. Y cómo olvidar aquella vez que tomamos en <strong>nuestro nidito de amor</strong> 🥹🏡💗. Quizá fueron momentos sencillos o hasta un poquito locos JAJAJA, pero son parte de nuestra historia y de esas pequeñas aventuras que solamente tú y yo podemos recordar y decir: <strong>“¿te acuerdas de ese día?”</strong> 😭😂❤️.</p>
+
+                <p>Y creo que eso es lo que más amo de nuestro primer año: que no solamente tenemos grandes momentos, sino también un montón de pequeñas historias, ocurrencias y locuras que hicieron que este año fuera completamente nuestro. 🥺💗✨Y entre todos estos recuerdos, mi amor, hay alguien a quien quiero agradecerle de una manera muy especial: <strong>Dios</strong>. 🙏🏻🤍</p>
+
+                <p>Porque sé que si hoy estamos aquí celebrando nuestro primer añito, también ha sido porque Él nos ha acompañado en cada paso. 🥹✨ Ha estado en nuestros días bonitos, pero también en esos momentos en los que las cosas no fueron tan fáciles, cuando tuvimos desacuerdos, cuando nos sentimos mal y cuando quizás no sabíamos qué hacer para solucionar las cosas. ❤️‍🩹</p>
+
+                <p>Gracias a Dios por haberte puesto en mi camino, por permitirme conocerte, amarte y compartir contigo este primer año de nuestra historia. 🙏🏻💗 Gracias por cada oportunidad que nos ha dado para aprender, para perdonarnos, para mejorar y para seguir adelante cuando las cosas se pusieron difíciles.</p>
+
+                <p>Yo quiero que nunca dejemos a Dios de lado, mi chiquito. 🥺🤍 Quiero que sigamos poniendo nuestra relación en Sus manos, que nos dé paciencia para entendernos, sabiduría para tomar buenas decisiones, humildad para reconocer cuando nos equivocamos y mucho amor para seguir cuidándonos. 🙏🏻🫂💕</p>
+
+                <p>Quiero pedirle que nos acompañe en este nuevo año que empieza para nosotros, que nos ayude a ser mejores el uno con el otro y que, cuando lleguen momentos difíciles, nos recuerde que podemos solucionarlos sin lastimarnos. Que podamos aprender de cada situación y que nuestro amor se vuelva cada día más bonito, más fuerte y más sano. 🌷❤️‍🩹</p>
+
+                <p>Y si Dios nos lo permite, quiero seguir coleccionando muchísimos recuerdos contigo. 🥹💗 Quiero otro año de risas, de comidas, de partidos, de viajes, de sorpresas, de abrazos, de nuestras locuras y de esas pequeñas cosas que solamente nosotros entendemos. Quiero seguir diciendo <strong>“mira todo lo que hemos vivido juntitos”</strong> y tener todavía muchísimas historias que contar. 🫶🏻✨</p>
+
+                <p>Gracias, Diosito, por nuestro primer año. 🤍🙏🏻 Y gracias, mi amor, por haberlo vivido conmigo.</p>
+
+                <div class="modal-letter-closing">
+                    Que sea Dios quien siga guiando nuestro camino y que nunca nos falte Su amor y Su protección. 🥹🤍✨
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 22px;">
+                <button type="button" class="pill-btn" onclick="toggleModal('letterModal')">Guardar cartita en el sobre 💌</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA VER FOTO AMPLIADA SIN TEXTO -->
+    <div class="modal-overlay" id="photoModal" onclick="toggleModal('photoModal')">
+        <div class="modal-paper" style="text-align: center; max-width: 520px;" onclick="event.stopPropagation()">
+            <img id="modalPhotoImg" src="" style="width: 100%; max-height: 68vh; object-fit: contain; border-radius: 12px; margin-bottom: 14px;">
+            <div>
+                <button type="button" class="pill-btn" onclick="toggleModal('photoModal')">Cerrar ♡</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Cuenta regresiva hacia el 23 de noviembre de 2026
+        const targetDate = new Date('2026-11-23T00:00:00');
+        function updateCountdown() {
+            const now = new Date();
+            let diff = targetDate - now;
+            if (diff < 0) diff = 0;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / 1000 / 60) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('cd-days').textContent = String(days).padStart(3, '0');
+            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('cd-min').textContent = String(mins).padStart(2, '0');
+            document.getElementById('cd-seg').textContent = String(secs).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 2. Reproductor: XDM - Ella Será (Cover Audio) ft. Fabio Legarda
+        const audio = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playPauseBtn');
+        const musicStatus = document.getElementById('musicStatus');
+        const musicDisc = document.getElementById('musicDisc');
+
+        let isPlaying = false;
+        let usingSynthFallback = false;
+        let audioCtx = null;
+        let synthInterval = null;
+
+        function startMelodyFallback() {
+            usingSynthFallback = true;
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass) return;
+            if (!audioCtx) audioCtx = new AudioContextClass();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const notes = [261.63, 329.63, 392.00, 523.25, 220.00, 261.63, 329.63, 440.00];
+            let step = 0;
+
+            function playTone() {
+                if (!isPlaying || !usingSynthFallback) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = notes[step % notes.length];
+                gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0008, audioCtx.currentTime + 0.85);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.9);
+                step++;
+            }
+
+            playTone();
+            synthInterval = setInterval(playTone, 650);
+        }
+
+        function stopMelodyFallback() {
+            usingSynthFallback = false;
+            if (synthInterval) {
+                clearInterval(synthInterval);
+                synthInterval = null;
+            }
+        }
+
+        function setPlayingUI(playing, label) {
+            isPlaying = playing;
+            playBtn.textContent = playing ? '❚❚' : '▶';
+            musicDisc.textContent = playing ? '🎶' : '🎵';
+            if (label) musicStatus.textContent = label;
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                stopMelodyFallback();
+                setPlayingUI(false, 'Pausado');
+                return;
+            }
+
+            setPlayingUI(true, 'Reproduciendo...');
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    stopMelodyFallback();
+                    setPlayingUI(true, 'Sonando ♪');
+                }).catch(() => {
+                    startMelodyFallback();
+                    setPlayingUI(true, 'Melodía suave (carga tu MP3 en 📁)');
+                });
+            }
+        }
+
+        function restartMusic() {
+            audio.currentTime = 0;
+            if (!isPlaying) {
+                toggleMusic();
+            } else if (!usingSynthFallback) {
+                audio.play().catch(() => {});
+            }
+        }
+
+        function loadLocalAudio(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            stopMelodyFallback();
+            const url = URL.createObjectURL(file);
+            audio.src = url;
+            audio.load();
+            audio.play().then(() => {
+                setPlayingUI(true, file.name);
+            }).catch(() => {
+                setPlayingUI(false, 'Listo: ' + file.name);
+            });
+        }
+
+        // 3. Generación de las 69 fotos (public/img/recuerdos/foto1.jpg .. foto69.jpg)
+        const totalFotos = 69;
+        let fotosList = [];
+        for (let i = 1; i <= totalFotos; i++) {
+            fotosList.push({
+                num: i,
+                basePath: `{{ asset('img/recuerdos/foto') }}${i}`
+            });
+        }
+
+        let showAllPhotos = false;
+        const polaroidGrid = document.getElementById('polaroidGrid');
+        const photoCounterLabel = document.getElementById('photoCounterLabel');
+        const toggleAllBtn = document.getElementById('toggleAllBtn');
+
+        function handleImgError(imgEl, cardEl, num) {
+            const step = Number(imgEl.dataset.fallbackStep || 0);
+            if (step === 0) {
+                imgEl.dataset.fallbackStep = 1;
+                imgEl.src = `{{ asset('img/recuerdos/foto') }}${num}.png`;
+            } else if (step === 1) {
+                imgEl.dataset.fallbackStep = 2;
+                imgEl.src = `{{ asset('img/recuerdos/foto') }}${num}.webp`;
+            } else {
+                cardEl.style.display = 'none';
+            }
+        }
+
+        function renderPhotos() {
+            const visibleList = showAllPhotos ? fotosList : fotosList.slice(0, 12);
+            polaroidGrid.innerHTML = '';
+
+            visibleList.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'polaroid-item';
+
+                const img = document.createElement('img');
+                img.src = `${item.basePath}.jpg`;
+                img.alt = `Recuerdo ${item.num}`;
+                img.dataset.fallbackStep = '0';
+                img.onerror = () => handleImgError(img, card, item.num);
+
+                card.appendChild(img);
+                card.addEventListener('click', () => {
+                    openDirectPhoto(img.src);
+                });
+                polaroidGrid.appendChild(card);
+            });
+
+            photoCounterLabel.textContent = showAllPhotos
+                ? `Mostrando las 69 fotos ♡`
+                : `Mostrando 12 de 69 fotos`;
+            toggleAllBtn.textContent = showAllPhotos ? 'Ver menos (12)' : 'Ver las 69';
+        }
+
+        function shuffleAllPhotos() {
+            fotosList = [...fotosList].sort(() => Math.random() - 0.5);
+            renderPhotos();
+            document.getElementById('loveToast').textContent = "🔀 ¡Las 69 fotos se mezclaron en orden aleatorio!";
+        }
+
+        function toggleShowAllPhotos() {
+            showAllPhotos = !showAllPhotos;
+            renderPhotos();
+        }
+
+        function openRandomFrom69() {
+            const visibleImgs = Array.from(polaroidGrid.querySelectorAll('.polaroid-item img'))
+                .filter(img => img.closest('.polaroid-item').style.display !== 'none' && img.complete && img.naturalWidth > 0);
+            if (visibleImgs.length > 0) {
+                const randomImg = visibleImgs[Math.floor(Math.random() * visibleImgs.length)];
+                openDirectPhoto(randomImg.src);
+            } else {
+                const randomItem = fotosList[Math.floor(Math.random() * fotosList.length)];
+                openDirectPhoto(`${randomItem.basePath}.jpg`);
+            }
+        }
+
+        function openDirectPhoto(src) {
+            document.getElementById('modalPhotoImg').src = src;
+            toggleModal('photoModal');
+        }
+
+        renderPhotos();
+
+        // 4. Explosión de corazones
+        function loveExplosion(e) {
+            const emojis = ['❤️', '💖', '💕', '💗', '🧸', '✨'];
+            for (let i = 0; i < 18; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'burst-heart';
+                heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                heart.style.left = (e.clientX || window.innerWidth / 2) + 'px';
+                heart.style.top = (e.clientY || window.innerHeight / 2) + 'px';
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 60 + Math.random() * 140;
+                heart.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                heart.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1300);
+            }
+        }
+
+        // 5. Botones de amor y anécdotas
+        const toast = document.getElementById('loveToast');
+        const razones = [
+            "Te amo porque contigo hasta las noches manejando son mi plan favorito. 🚗💕",
+            "Te amo por hacerme reír siempre y tenerme tanta paciencia. 🥰",
+            "Te amo porque eres mi ochito y mi lugar seguro en este mundo. 🧸💗",
+            "Te amo porque Dios te puso en mi camino en el momento perfecto. ✨"
+        ];
+        const cupones = [
+            "🎟️ VALE POR: Una salchipapa yiica juntos donde tú elijas 🍟",
+            "🎟️ VALE POR: Otra revancha en el billar (aunque te vuelva a ganar jajaja) 🎱",
+            "🎟️ VALE POR: Un abrazo gigante y 50 besitos seguidos 😘",
+            "🎟️ VALE POR: Una noche de paseo en auto con nuestra playlist favorita 🎶"
+        ];
+        const anecdotas = [
+            "😂 Cuando la pelota se cayó a la torrentera y nos morimos de risa ⚽️",
+            "🐭 Cuando conociste una vizcachita y te gané jugando fútbol 🏔️🏆",
+            "🍷 Cuando bailamos con 'Mami Mami' haciendo nuestras locuras 😂💃🏻",
+            "🥐 Cuando te llevé tu desayunito de mañanita con todo mi cariño 🥹☕"
+        ];
+
+        function showStoryToast(msg) { toast.textContent = msg; }
+        function randomLoveReason() { toast.textContent = razones[Math.floor(Math.random() * razones.length)]; }
+        function randomCoupon() { toast.textContent = cupones[Math.floor(Math.random() * cupones.length)]; }
+        function randomAnecdote() { toast.textContent = anecdotas[Math.floor(Math.random() * anecdotas.length)]; }
+
+        // 6. Collage
+        const collageGrid = document.getElementById('collageGrid');
+        const collageTiles = Array.from(collageGrid.children);
+
+        function shuffleCollage() {
+            const shuffled = [...collageTiles].sort(() => Math.random() - 0.5);
+            collageGrid.innerHTML = '';
+            shuffled.forEach(t => collageGrid.appendChild(t));
+            toast.textContent = "✨ ¡Collage reordenado!";
+        }
+
+        function scrollTimeline() {
+            document.getElementById('timelineTrack').scrollBy({ left: 220, behavior: 'smooth' });
+        }
+
+        function toggleModal(id) {
+            document.getElementById(id).classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
